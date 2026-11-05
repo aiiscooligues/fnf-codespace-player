@@ -35,6 +35,20 @@ Preserve the web build's relative folder structure. Do not place an archive in `
 
 The included `mods/README.md` explains the expected layout.
 
+## Automatic downloads
+
+The optional installer in `tools/install_mods.py` downloads only the URLs you explicitly put in a manifest. It accepts HTTPS ZIP archives, checks an optional SHA-256 checksum, rejects path-traversal entries, requires an `index.html`, and refuses to overwrite an existing mod unless `--force` is supplied.
+
+Copy the example and replace it with release URLs from sources you trust and are allowed to use:
+
+```bash
+cp mods/manifest.example.json mods/manifest.json
+python3 tools/install_mods.py --manifest mods/manifest.json --dry-run
+python3 tools/install_mods.py --manifest mods/manifest.json
+```
+
+Use direct release-asset URLs rather than scraping mod pages. Keep `mods/manifest.json` private or add it to `.gitignore` if it contains download links you do not want to publish. The script intentionally does not guess what “popular” means, scrape websites, bypass access controls, or download native desktop builds.
+
 ## Local use
 
 Requires Python 3. Run:
