@@ -1,0 +1,16 @@
+services:
+  native-game:
+    build: .
+    ports:
+      # Bind locally by default. Forward port 6080 from Codespaces only when needed.
+      - "127.0.0.1:6080:6080"
+    environment:
+      GAME_EXE: ${GAME_EXE:-/games/example-mod/game.exe}
+    volumes:
+      - ./games:/games:ro
+      - ./config:/config:ro
+      - wine-data:/wine
+    restart: "no"
+
+volumes:
+  wine-data:
