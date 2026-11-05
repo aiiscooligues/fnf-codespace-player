@@ -1,11 +1,18 @@
 {
   "name": "FNF Codespace Player",
   "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bookworm",
-  "forwardPorts": [8080],
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {}
+  },
+  "forwardPorts": [8080, 6080],
   "portsAttributes": {
     "8080": {
       "label": "FNF game player",
       "onAutoForward": "openPreview"
+    },
+    "6080": {
+      "label": "Native game viewer (noVNC)",
+      "onAutoForward": "notify"
     }
   },
   "postCreateCommand": "chmod +x start.sh"
