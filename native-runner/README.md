@@ -4,6 +4,10 @@ This optional service runs a **specific, allowlisted Windows executable** inside
 
 This is intended for legally obtained native builds. Do not use it to bypass DRM or access controls. Keep port 6080 private; a public VNC viewer can control the running game.
 
+## Mod catalog
+
+[`mod-catalog.json`](mod-catalog.json) lists verified creator-linked or platform-hosted pages for several popular native FNF mods. It is metadata only: the repository does not redistribute their executable files, and the runner never scrapes pages or auto-runs an arbitrary download. Open a source page, review its license and download, place the chosen executable under `native-runner/games/`, and add that exact container path to `config/allowlist.json`.
+
 ## Setup
 
 From the repository root:

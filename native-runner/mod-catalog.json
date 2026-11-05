@@ -1,0 +1,92 @@
+[
+  {
+    "id": "whitty",
+    "name": "VS Whitty Full Week (LEGACY)",
+    "source_url": "https://gamebanana.com/mods/44214",
+    "download_page": "https://gamebanana.com/mods/44214",
+    "native_executable": true,
+    "web_build": false,
+    "notes": "GameBanana Executables listing; creator-linked source repository is https://github.com/KadeDev/vswhitty-public."
+  },
+  {
+    "id": "tricky",
+    "name": "VS Tricky (The Full-Ass Tricky Mod)",
+    "source_url": "https://gamebanana.com/mods/44334",
+    "download_page": "https://gamebanana.com/mods/44334",
+    "native_executable": true,
+    "web_build": false,
+    "notes": "Banbuds creator listing; Windows/PC native build."
+  },
+  {
+    "id": "sonic-exe",
+    "name": "VS Sonic.EXE",
+    "source_url": "https://gamebanana.com/mods/316022",
+    "download_page": "https://gamebanana.com/mods/316022",
+    "native_executable": true,
+    "web_build": false,
+    "notes": "Team-associated GameBanana listing with native release archives and linked source repositories."
+  },
+  {
+    "id": "hypnos-lullaby",
+    "name": "Hypno's Lullaby",
+    "source_url": "https://gamebanana.com/mods/download/696957",
+    "download_page": "https://gamebanana.com/mods/download/696957",
+    "native_executable": true,
+    "web_build": false,
+    "notes": "Creator-linked listing with Windows, macOS, and Linux demo archives; source repository: https://github.com/CabinetOfNovelteam/lullaby_public."
+  },
+  {
+    "id": "shaggy",
+    "name": "VS Shaggy [The Ultimate Update]",
+    "source_url": "https://srperez.itch.io/shaggy-mod",
+    "download_page": "https://srperez.itch.io/shaggy-mod",
+    "native_executable": true,
+    "web_build": false,
+    "notes": "Creator-hosted itch.io Windows download by srPerez."
+  },
+  {
+    "id": "zardy",
+    "name": "V.S Zardy",
+    "source_url": "https://gamebanana.com/mods/44366",
+    "download_page": "https://gamebanana.com/mods/download/44366#FileInfo_647548",
+    "native_executable": true,
+    "web_build": false,
+    "notes": "GameBanana Executables listing with a 64-bit native archive."
+  },
+  {
+    "id": "bob-and-bosip",
+    "name": "Vs. Bob & Bosip: The EX Update",
+    "source_url": "https://github.com/ash237/vs-Bob-and-Bosip",
+    "download_page": "https://github.com/ash237/vs-Bob-and-Bosip/releases/tag/V1.1.2",
+    "native_executable": false,
+    "web_build": false,
+    "notes": "Public source repository; no release executable was confirmed on the verified release page."
+  },
+  {
+    "id": "matt",
+    "name": "Wii Funkin' - VS Matt (V3 UPDATE)",
+    "source_url": "https://gamebanana.com/mods/44511",
+    "download_page": "https://gamebanana.com/gamefiles/download/19563",
+    "native_executable": true,
+    "web_build": false,
+    "notes": "GameBanana listing includes native .exe files; creator-linked source repository: https://github.com/TheZoroForce240/WF-Vs-Matt-V3."
+  },
+  {
+    "id": "mario-madness",
+    "name": "Mario's Madness",
+    "source_url": "https://gamejolt.com/games/mariosmadness/693301",
+    "download_page": "https://gamejolt.com/games/mariosmadness/693301",
+    "native_executable": true,
+    "web_build": false,
+    "notes": "Creator-owned Game Jolt page by Marco Antonio / Mario's Madness Team; native downloadable build."
+  },
+  {
+    "id": "indie-cross",
+    "name": "Indie Cross",
+    "source_url": "https://gamejolt.com/games/indiecross/643540",
+    "download_page": "https://gamejolt.com/games/indiecross/643540",
+    "native_executable": true,
+    "web_build": false,
+    "notes": "Official Game Jolt release page for the Indie Cross team; native downloadable builds."
+  }
+]
