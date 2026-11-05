@@ -17,6 +17,17 @@ mkdir -p native-runner/games native-runner/config
 cp native-runner/allowlist.example.json native-runner/config/allowlist.json
 ```
 
+## One-time download
+
+If you have a direct, authorized HTTPS ZIP URL, you can download it once into the persistent Codespace workspace instead of uploading it every session. Copy `manifest.example.json` to `manifest.json`, replace the placeholder URL with the direct release-asset URL, and optionally add its SHA-256 checksum:
+
+```bash
+cp native-runner/manifest.example.json native-runner/manifest.json
+python3 tools/install_native.py --manifest native-runner/manifest.json
+```
+
+The script stores the extracted files under `native-runner/games/`. Do not use a GameBanana page URL as the `url`; use a direct download URL only when the host and mod author permit automated downloading. The repository does not scrape GameBanana or redistribute its files.
+
 Put a game in its own directory, for example:
 
 ```text

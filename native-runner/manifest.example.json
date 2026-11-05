@@ -1,0 +1,7 @@
+[
+  {
+    "name": "sonic-exe",
+    "url": "https://trusted-authorized-source.example/mod.zip",
+    "sha256": "optional-64-character-sha256-checksum"
+  }
+]
