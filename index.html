@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FNF Codespace Player</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <main class="shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">CODESPACE / PORT 8080</p>
+        <h1>FNF <span>Player</span></h1>
+        <p class="lede">Load a browser build, pick a mod, and play it in this forwarded Codespace.</p>
+      </div>
+      <div class="status"><i></i><span id="status-text">Scanning mods…</span></div>
+    </header>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">YOUR LIBRARY</p>
+          <h2>Choose a mod</h2>
+        </div>
+        <button id="refresh" class="button secondary" type="button">Refresh</button>
+      </div>
+      <div id="mod-list" class="mod-list" aria-live="polite"></div>
+    </section>
+
+    <section id="player-panel" class="panel player-panel" hidden>
+      <div class="panel-heading">
+        <div>
+          <p class="eyebrow">NOW PLAYING</p>
+          <h2 id="current-mod">—</h2>
+        </div>
+        <a id="open-game" class="button secondary" target="_blank" rel="noopener">Open in new tab</a>
+      </div>
+      <div class="game-frame-wrap"><iframe id="game-frame" title="FNF mod game"></iframe></div>
+    </section>
+
+    <footer>Only use mod files you are allowed to possess and share. Native desktop builds are not browser-compatible.</footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
