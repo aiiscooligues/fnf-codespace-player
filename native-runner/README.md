@@ -28,6 +28,21 @@ python3 tools/install_native.py --manifest native-runner/manifest.json
 
 The script stores the extracted files under `native-runner/games/`. Do not use a GameBanana page URL as the `url`; use a direct download URL only when the host and mod author permit automated downloading. The repository does not scrape GameBanana or redistribute its files.
 
+For catalog entries hosted on GameBanana, the installer can resolve the current official archive automatically:
+
+```bash
+python3 tools/install_native.py --list
+python3 tools/install_native.py --mod sonic-exe
+```
+
+For a source page with multiple archives, choose one by its displayed filename:
+
+```bash
+python3 tools/install_native.py --mod sonic-exe --file-name vs_sonicexe_final_build.rar
+```
+
+Use `--dry-run` to resolve and show the selected archive without downloading it. The installer verifies the checksum supplied by GameBanana, extracts the archive, and does not launch the executable.
+
 Put a game in its own directory, for example:
 
 ```text
