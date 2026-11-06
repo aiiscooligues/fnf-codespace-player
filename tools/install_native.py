@@ -70,6 +70,12 @@ def extract_archive(archive_path: Path, extracted: Path) -> None:
     seven_zip = shutil.which("7z") or shutil.which("7zz")
     if not seven_zip:
         raise RuntimeError("this archive is not ZIP; install p7zip-full (7z) in the Codespace and retry")
+    listing = subprocess.run([seven_zip, "l", "-slt", str(archive_path)], check=True, capture_output=True, text=True)
+    for line in listing.stdout.splitlines():
+        if line.startswith("Path = "):
+            member = line.removeprefix("Path = ").strip().replace("\\", "/")
+            if member.startswith("/") or "/../" in f"/{member}/" or member.startswith("../") or member == "..":
+                raise ValueError(f"unsafe archive path: {member}")
     subprocess.run([seven_zip, "x", "-y", f"-o{extracted}", str(archive_path)], check=True)
 
 

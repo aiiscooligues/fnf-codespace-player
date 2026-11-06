@@ -43,6 +43,12 @@ python3 tools/install_native.py --mod sonic-exe --file-name vs_sonicexe_final_bu
 
 Use `--dry-run` to resolve and show the selected archive without downloading it. The installer verifies the checksum supplied by GameBanana, extracts the archive, and does not launch the executable.
 
+ZIP, RAR, and 7z archives are supported. The native runner image includes `p7zip-full`; rebuild it after pulling this update:
+
+```bash
+docker compose -f compose.yaml build --no-cache
+```
+
 Put a game in its own directory, for example:
 
 ```text
