@@ -68,14 +68,24 @@ def extract_archive(archive_path: Path, extracted: Path) -> None:
             safe_members(archive)
             archive.extractall(extracted)
         return
+    unrar = shutil.which("unrar")
+    if archive_path.suffix.lower() == ".rar" and unrar:
+        subprocess.run([unrar, "t", "-y", str(archive_path)], check=True)
+        subprocess.run([unrar, "x", "-y", str(archive_path), f"{extracted}/"], check=True)
+        return
     seven_zip = shutil.which("7z") or shutil.which("7zz")
     if not seven_zip and os.name == "posix" and shutil.which("sudo") and shutil.which("apt-get"):
         print("7z is missing; installing p7zip-full…")
         subprocess.run(["sudo", "apt-get", "update"], check=True)
-        subprocess.run(["sudo", "apt-get", "install", "-y", "p7zip-full"], check=True)
+        subprocess.run(["sudo", "apt-get", "install", "-y", "unrar", "p7zip-full"], check=True)
+        unrar = shutil.which("unrar")
         seven_zip = shutil.which("7z") or shutil.which("7zz")
+        if archive_path.suffix.lower() == ".rar" and unrar:
+            subprocess.run([unrar, "t", "-y", str(archive_path)], check=True)
+            subprocess.run([unrar, "x", "-y", str(archive_path), f"{extracted}/"], check=True)
+            return
     if not seven_zip:
-        raise RuntimeError("RAR/7z extraction needs p7zip-full; run: sudo apt-get update && sudo apt-get install -y p7zip-full")
+        raise RuntimeError("RAR extraction needs RARLAB unrar; run: sudo apt-get update && sudo apt-get install -y unrar")
     listing = subprocess.run([seven_zip, "l", "-slt", str(archive_path)], check=True, capture_output=True, text=True)
     for line in listing.stdout.splitlines():
         if line.startswith("Path = "):
