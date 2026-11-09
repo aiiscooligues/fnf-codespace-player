@@ -5,7 +5,7 @@
   "portsAttributes": {
     "8080": {
       "label": "FNF web player",
-      "onAutoForward": "openPreview"
+      "onAutoForward": "notify"
     },
     "6080": {
       "label": "Native game viewer (noVNC)",
@@ -32,7 +32,5 @@
         "files.insertFinalNewline": true
       }
     }
-  },
-  "postCreateCommand": "bash .devcontainer/setup.sh",
-  "postStartCommand": "bash .devcontainer/start-services.sh"
+  }
 }
