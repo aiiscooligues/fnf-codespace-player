@@ -3,3 +3,6 @@
 __pycache__/
 *.pyc
 .env
+roms/**/*
+!roms/README.md
+!roms/.gitkeep

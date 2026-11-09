@@ -1,0 +1,12 @@
+services:
+  rom-player:
+    build: .
+    ports:
+      - "127.0.0.1:6090:6090"
+    environment:
+      ROM_PATH: ${ROM_PATH:?Set ROM_PATH, for example /roms/nes/game.nes}
+      CORE: ${CORE:?Set CORE, for example nestopia}
+    volumes:
+      - ../roms:/roms:ro
+      - ./config:/config:ro
+    restart: "no"

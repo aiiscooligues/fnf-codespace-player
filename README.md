@@ -82,6 +82,10 @@ PORT=3000 ./start.sh
 
 An optional Wine/noVNC runner is included under `native-runner/`. It runs one explicitly allowlisted `.exe` inside an isolated container and exposes its virtual desktop on port `6080`. Read [`native-runner/README.md`](native-runner/README.md) before using it; keep that port private because it provides interactive control of the running game.
 
+## Legal ROM mode
+
+An optional RetroArch/noVNC runner is included under `rom-runner/`. It supports authorized NES, SNES, Genesis, Game Boy, and GBA ROMs through port `6090`. Put your own ROMs under `roms/`, then follow [`rom-runner/README.md`](rom-runner/README.md). The repository does not connect to ROM sites or include commercial ROMs and BIOS files.
+
 ## License
 
 The launcher code in this repository is released under the MIT License. Mod files remain under their respective authors' licenses; check each mod's terms before uploading or sharing them.
