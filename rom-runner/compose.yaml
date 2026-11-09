@@ -6,6 +6,12 @@ services:
     environment:
       ROM_PATH: ${ROM_PATH:?Set ROM_PATH, for example /roms/nes/game.nes}
       CORE: ${CORE:?Set CORE, for example nestopia}
+      PPSSPP_RENDERING_MODE: ${PPSSPP_RENDERING_MODE:-OpenGL}
+      PPSSPP_INTERNAL_RESOLUTION: ${PPSSPP_INTERNAL_RESOLUTION:-480x272}
+      PPSSPP_CPU_CORE: ${PPSSPP_CPU_CORE:-jit}
+      PPSSPP_FAST_MEMORY: ${PPSSPP_FAST_MEMORY:-enabled}
+      PPSSPP_AUTO_FRAMESKIP: ${PPSSPP_AUTO_FRAMESKIP:-enabled}
+      PPSSPP_FRAMESKIP: ${PPSSPP_FRAMESKIP:-1}
     volumes:
       - ../roms:/roms:ro
       - ./config:/config:ro

@@ -30,6 +30,35 @@ if [[ -z "$core_path" ]]; then
   exit 6
 fi
 
+retroarch_config=/tmp/retroarch.cfg
+cat > "$retroarch_config" <<'EOF'
+video_fullscreen = "false"
+video_windowed_fullscreen = "false"
+video_vsync = "true"
+audio_enable = "true"
+core_options_path = "/tmp/retroarch-core-options.cfg"
+EOF
+
+if [[ "$CORE" == "ppsspp" ]]; then
+  : "${PPSSPP_RENDERING_MODE:=OpenGL}"
+  : "${PPSSPP_INTERNAL_RESOLUTION:=480x272}"
+  : "${PPSSPP_CPU_CORE:=jit}"
+  : "${PPSSPP_FAST_MEMORY:=enabled}"
+  : "${PPSSPP_AUTO_FRAMESKIP:=enabled}"
+  : "${PPSSPP_FRAMESKIP:=1}"
+  cat > /tmp/retroarch-core-options.cfg <<EOF
+ppsspp_rendering_mode = "$PPSSPP_RENDERING_MODE"
+ppsspp_internal_resolution = "$PPSSPP_INTERNAL_RESOLUTION"
+ppsspp_cpu_core = "$PPSSPP_CPU_CORE"
+ppsspp_fast_memory = "$PPSSPP_FAST_MEMORY"
+ppsspp_auto_frameskip = "$PPSSPP_AUTO_FRAMESKIP"
+ppsspp_frameskip = "$PPSSPP_FRAMESKIP"
+ppsspp_texture_scaling_level = "1"
+ppsspp_texture_deposterize = "disabled"
+ppsspp_texture_anisotropic_filtering = "off"
+EOF
+fi
+
 Xvfb "$DISPLAY" -screen 0 1280x720x24 -ac +extension GLX +render -noreset >/tmp/xvfb.log 2>&1 &
 XVFB_PID=$!
 fluxbox >/tmp/fluxbox.log 2>&1 &
@@ -46,4 +75,4 @@ sleep 2
 echo "ROM viewer ready at http://127.0.0.1:6090/vnc.html?autoconnect=1&resize=remote"
 echo "Core: $CORE"
 echo "ROM: $rom"
-retroarch --config /dev/null --verbose --fullscreen --menu-unified-content yes -L "$core_path" "$rom"
+retroarch --config "$retroarch_config" --verbose --fullscreen --menu-unified-content yes -L "$core_path" "$rom"

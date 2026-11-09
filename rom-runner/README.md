@@ -49,6 +49,18 @@ ROM_PATH=/roms/psp/my-game.iso CORE=ppsspp docker compose up --build
 
 Put PSP images under `roms/psp/`. The runner includes the PPSSPP libretro core; PSP performance depends heavily on the Codespace CPU, and some games may be too demanding for a software-rendered virtual display.
 
+The PSP launch defaults are tuned for speed: JIT CPU core, fast memory, 1x native resolution, OpenGL, and adaptive frameskip. Override them for a specific game:
+
+```bash
+cd rom-runner
+PPSSPP_INTERNAL_RESOLUTION=960x544 \
+PPSSPP_AUTO_FRAMESKIP=disabled \
+PPSSPP_FRAMESKIP=0 \
+ROM_PATH=/roms/psp/my-game.iso CORE=ppsspp docker compose up --build
+```
+
+For the best baseline, start with the defaults. If the game is slow, keep `480x272`, leave adaptive frameskip enabled, and avoid texture upscaling. If it is stable and you want sharper output, try `960x544`. The biggest improvement comes from choosing a Codespace with more CPU; Xvfb/noVNC is software-rendered and does not provide GPU acceleration.
+
 Forward port **6090** in Codespaces and open:
 
 ```text
