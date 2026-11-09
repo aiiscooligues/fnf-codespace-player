@@ -10,4 +10,7 @@ roms/snes/my-game.sfc
 roms/genesis/my-game.md
 roms/gb/my-game.gb
 roms/gba/my-game.gba
+roms/psp/my-game.iso
 ```
+
+PSP images may use `.iso` or `.cso`. Keep them local; ROM files are ignored by Git and are not included in the public repository.

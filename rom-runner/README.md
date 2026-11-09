@@ -11,6 +11,7 @@ This optional service plays ROM files that you own or are authorized to use. It 
 | Genesis / Mega Drive | `genesis_plus_gx` | `.md`, `.gen`, `.bin` |
 | Game Boy / Color | `gambatte` | `.gb`, `.gbc` |
 | Game Boy Advance | `mgba` | `.gba` |
+| PSP | `ppsspp` | `.iso`, `.cso` |
 
 Additional systems require adding a compatible RetroArch core and, for some systems, a BIOS file that you legally obtained. “Any ROM” is not guaranteed because ROM formats and emulator requirements differ.
 
@@ -38,6 +39,15 @@ ROM_PATH=/roms/nes/my-game.nes CORE=nestopia docker compose up --build
 cd rom-runner
 ROM_PATH=/roms/gba/my-game.gba CORE=mgba docker compose up --build
 ```
+
+For PSP:
+
+```bash
+cd rom-runner
+ROM_PATH=/roms/psp/my-game.iso CORE=ppsspp docker compose up --build
+```
+
+Put PSP images under `roms/psp/`. The runner includes the PPSSPP libretro core; PSP performance depends heavily on the Codespace CPU, and some games may be too demanding for a software-rendered virtual display.
 
 Forward port **6090** in Codespaces and open:
 

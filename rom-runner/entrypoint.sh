@@ -19,7 +19,7 @@ esac
 [[ -f "$rom" ]] || { echo "ROM not found: $rom" >&2; exit 4; }
 
 case "$CORE" in
-  nestopia|snes9x|genesis_plus_gx|mgba|gambatte) ;;
+  nestopia|snes9x|genesis_plus_gx|mgba|gambatte|ppsspp) ;;
   *) echo "Unsupported core: $CORE" >&2; exit 5 ;;
 esac
 
