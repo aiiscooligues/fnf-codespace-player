@@ -20,6 +20,16 @@ Play legally obtained **browser/web builds** of Friday Night Funkin' mods inside
 
 The devcontainer installs the recommended VS Code extensions and forwards ports `8080`, `6080`, and `6090`. It intentionally has no startup hooks or package-install commands, so a missing Docker daemon or broken APT source cannot put the Codespace into recovery mode. After the Codespace opens, optional setup can be run manually with `bash .devcontainer/setup.sh`; native and ROM runners still require Docker support in the Codespace or VM.
 
+## Easy launcher
+
+After adding an authorized ROM under `roms/`, run:
+
+```bash
+./play.sh
+```
+
+Choose **1** to start the web FNF player or **2** to select a ROM from a numbered list. The launcher detects the system and chooses the emulator core automatically, then starts the ROM viewer on port `6090`.
+
 If the Codespace does not automatically forward port 8080, add it manually in the Ports panel and set its visibility to the level you want. Do not make a port public unless you understand that anyone with the URL may be able to access the running game.
 
 ## Adding a mod

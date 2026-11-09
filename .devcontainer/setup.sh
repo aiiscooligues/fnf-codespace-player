@@ -6,7 +6,7 @@ cd "$ROOT"
 
 mkdir -p mods roms/nes roms/snes roms/genesis roms/gb roms/gba roms/psp \
   native-runner/games native-runner/config rom-runner/config
-chmod +x start.sh native-runner/entrypoint.sh rom-runner/entrypoint.sh \
+chmod +x start.sh play.sh native-runner/entrypoint.sh rom-runner/entrypoint.sh \
   tools/install_mods.py tools/install_native.py 2>/dev/null || true
 
 # Keep setup non-fatal: Codespaces may have unavailable or broken third-party APT sources.
