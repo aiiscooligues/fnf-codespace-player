@@ -6,3 +6,4 @@ __pycache__/
 roms/**/*
 !roms/README.md
 !roms/.gitkeep
+roms_catalog.json
