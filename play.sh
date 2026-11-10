@@ -62,6 +62,40 @@ play_rom() {
   ROM_PATH="/roms/$relative" CORE="$core" docker compose up --build
 }
 
+play_exe() {
+  require_docker
+  mapfile -t exes < <(find "$ROOT/native-runner/games" -type f -iname '*.exe' -print | sort -f)
+  if (( ${#exes[@]} == 0 )); then
+    echo "No .exe files found in native-runner/games/."
+    exit 1
+  fi
+
+  echo
+  echo "Choose a native Windows game (it will stream in your browser through noVNC):"
+  local i
+  for i in "${!exes[@]}"; do
+    printf '  %d) %s\n' "$((i + 1))" "${exes[$i]#"$ROOT/native-runner/games/"}"
+  done
+  echo
+  read -r -p "Enter a number: " choice
+  if ! [[ "$choice" =~ ^[0-9]+$ ]] || (( choice < 1 || choice > ${#exes[@]} )); then
+    echo "Invalid selection."
+    exit 1
+  fi
+
+  local selected="${exes[$((choice - 1))]}"
+  local relative="${selected#"$ROOT/native-runner/games/"}"
+  python3 - "$ROOT/native-runner/config/allowlist.json" "/games/$relative" <<'PY'
+import json, pathlib, sys
+path = pathlib.Path(sys.argv[1])
+path.parent.mkdir(parents=True, exist_ok=True)
+path.write_text(json.dumps({"executables": [sys.argv[2]]}, indent=2) + "\n")
+PY
+  echo "Starting $(basename "$selected") on browser viewer port 6080..."
+  cd "$ROOT/native-runner"
+  GAME_EXE="/games/$relative" docker compose up --build
+}
+
 case "${1:-}" in
   web)
     exec "$ROOT/start.sh"
@@ -72,15 +106,17 @@ case "${1:-}" in
   "")
     echo "FNF Codespace Player"
     echo
-    echo "1) Start web FNF player (port 8080)"
-    echo "2) Play a local ROM (port 6090)"
-    echo "3) Exit"
+echo "1) Start web FNF player (port 8080)"
+echo "2) Play a local ROM (port 6090)"
+echo "3) Play a native .exe in browser viewer (port 6080)"
+echo "4) Exit"
     echo
     read -r -p "Choose an option: " option
     case "$option" in
       1) exec "$ROOT/start.sh" ;;
       2) play_rom ;;
-      3) exit 0 ;;
+      3) play_exe ;;
+      4) exit 0 ;;
       *) echo "Invalid option."; exit 1 ;;
     esac
     ;;

@@ -28,7 +28,7 @@ After adding an authorized ROM under `roms/`, run:
 ./play.sh
 ```
 
-Choose **1** to start the web FNF player or **2** to select a ROM from a numbered list. The launcher detects the system and chooses the emulator core automatically, then starts the ROM viewer on port `6090`.
+Choose **1** to start the web FNF player, **2** to select a ROM from a numbered list, or **3** to select a native `.exe`. The launcher detects the ROM system and chooses the emulator core automatically, then starts the ROM viewer on port `6090`. Native `.exe` files run in Wine and are streamed to the browser through noVNC on port `6080`; a browser cannot execute the `.exe` directly.
 
 If the Codespace does not automatically forward port 8080, add it manually in the Ports panel and set its visibility to the level you want. Do not make a port public unless you understand that anyone with the URL may be able to access the running game.
 
